@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>智淘-分类</title>
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="assets/fontAwesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/moblile.css">
+    <link rel="stylesheet" href="css/category.css">
+</head>
+<body>
+    <div class="zt_container">
+        <!-- 顶部区域 -->
+        <header class="zt_topBar">
+            <a href="javascript:history.back();" class="icon"><span class="fa fa-chevron-left"></span></a>
+            <h3>商品分类</h3>
+            <a href="search.html" class="icon"><span class="fa fa-search"></span></a>
+        </header>
+        <!-- 中心内容区域 -->
+        <section class="zt_wrapper flex">
+            <!-- 内容区域 -->
+            <aside class="zt_cateLeft">
+                <!-- 内容区域 -->
+            </aside>
+            <article class="zt_cateRight">
+                <!-- 内容区域 -->
+            </article>
+        </section>
+        <!-- 底部区域 -->
+        <footer class="zt_tabs">
+            <!-- 四个菜单项 -->
+            <a href="index.html"><span class="fa fa-home"></span><p>首页</p></a>
+            <a href="category.html" class="now"><span class="fa fa-bars"></span><p>分类</p></a>
+            <a href="user/cart.html"><span class="fa fa-shopping-cart"></span><p>购物车</p></a>
+            <a href="user/index.html"><span class="fa fa-user"></span><p>个人中心</p></a>
+        </footer>
+    </div>
+    <!-- 通过模板引擎 渲染左侧列表 -->
+    <script type="text/template" id="top">
+        <ul>
+            {{each rows}}
+            <li class="{{$index === 0 ? 'now' : ''}}" data-id="{{$value.id}}" data-last="{{$index === rows.length-1 ? '1' : '0'}}"><a href="javascript:;">{{$value.categoryName}}</a></li>
+            {{/each}}
+        </ul>
+    </script>
+    <!-- 通过模板引擎 渲染右侧相对应的产品 -->
+    <script type="text/template" id="second">
+        <ul>
+            {{if rows.length}}
+                {{each rows}}
+                <li><a href="#"><img src="{{$value.brandLogo}}" alt=""><p>{{$value.brandName}}</p></a></li>
+                {{/each}}
+            {{else}}
+                <li class="nd">没有分类数据</li>
+            {{/if}}
+        </ul>
+    </script>
+    <!-- 引入mui  mui：不限定使用其他js库  故而能使用jquery -->
+    <script src="assets/mui/js/mui.min.js"></script>
+    <!--  -->
+    <script src="assets/zepto/zepto.min.js"></script>
+    <!-- 引入模板引擎  方便接收到json数据 然后对页面的渲染 -->
+    <script src="assets/artTemplate/template-web.js"></script>
+    <script src="js/category.js"></script>
+</body>
+</html>
